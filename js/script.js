@@ -14,15 +14,15 @@ let Quotes = [
   {quote:"The greatest glory in living lies not in never falling, but in rising every time we fall", author: "Nelson Mandela", year:'',citation:""},
   {quote:"The way to get started is to quit talking and begin doing", author: "Walt Disney", year:'',citation:""},
   {quote:"Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.", author: "Steve Jobs", year:'',citation:""},
-  {quote:"Many of life's failures are people who did not realize how close they were to success when they gave up.", author: "Thomas Edison", year:'',citation:""},
+  {quote:"Many of life's failures are people who did not realize how close they were to success when they gave up", author: "Thomas Edison", year:'',citation:""},
   {quote:"Never let the fear of striking out keep you from playing the game.", author: "Babe Ruth", year:'',citation:""},
   {quote:"You only live once, but if you do it right, once is enough.", author: "Mae West", year:'',citation:""},
   {quote:"Try not to become a man of success. Rather become a man of value." , author: "Albert Einstein", year:'',citation:""},
   {quote:"If you are not willing to risk the usual, you will have to settle for the ordinary.", author: "Jim Rohn", year:'',citation:""},
-  {quote:"Natasha", author: "Natasha", year: 20, citation:"En la casa"},
-  {quote:"Tatiana", author: "Tatiana", year:'',citation:""},
-  {quote:"Vanessa", author: "Vanessa", year:'',citation:""},
-  {quote:"Juan", author: "Juan", year:'',citation:""}
+  {quote:"Every great developer you know got there by solving problems they were unqualified to solve until they actually did it.", author: "Patrick McKenzie", year: 2016, citation:"Twitter"},
+  {quote:"If you want to know what a man's like, take a good look at how he treats his inferiors, not his equals.", author: "J.K. Rowling", year:2000,citation:"Harry Potter and the Goblet of Fire"},
+  {quote:"Happiness can be found, even in the darkest of times, if one only remembers to turn on the light", author: "J.K. Rowling", year:'',citation:"Harry Potter and the Prisoner of Azkaban"},
+  {quote:"I like nonsense, it wakes up the brain cells. Fantasy is a necessary ingredient in living.", author: "Dr. Seuss", year:'',citation:""}
 
 ]
 
@@ -33,8 +33,8 @@ let Quotes = [
 
 let randomQuote = function(arr) {
   let num = Math.floor(Math.random()*arr);
-  //quoteSelect = Quotes[num];
   return Quotes[num];
+ 
 }
 
 
@@ -52,7 +52,13 @@ function printQuote() {
   <p class="source">${quoteSelect.author}<span class="citation">${quoteSelect.citation}</span><span class="year">${quoteSelect.year}</span></p>
   `;
   }
-  else{
+  else if((quoteSelect.year === '' && quoteSelect.citation !== '')){
+    document.querySelector('div').innerHTML = `
+  <p class="quote">${quoteSelect.quote}</p>
+  <p class="source">${quoteSelect.author}<span class="citation">${quoteSelect.citation}</span></p>
+  `;
+  }
+  else {
     document.querySelector('div').innerHTML = `
   <p class="quote">${quoteSelect.quote}</p>
   <p class="source">${quoteSelect.author}</p>
