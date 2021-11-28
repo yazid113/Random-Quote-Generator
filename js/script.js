@@ -10,6 +10,10 @@ project 1 - A Random Quote Generator
 /*** 
  * `quotes` array 
 ***/
+
+/*
+Array form of quotes, with each have the following properties quote, author, year, and citation
+*/
 let Quotes = [
   {quote:"The greatest glory in living lies not in never falling, but in rising every time we fall", author: "Nelson Mandela", year:'',citation:""},
   {quote:"The way to get started is to quit talking and begin doing", author: "Walt Disney", year:'',citation:""},
@@ -26,11 +30,25 @@ let Quotes = [
 
 ]
 
+/*
+Return a random hexdecimal number use for the color value of the background
+  use the # symbol to form the complete color number in javascript
+
+*/
+function generateRandomColor()
+{
+    var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+    return randomColor;
+}
 
 /***
  * `getRandomQuote` function
 ***/
 
+/***
+ * Return a random quote from the array using the function random number 
+ * and passing the length of the array as parameter 
+***/
 let randomQuote = function(arr) {
   let num = Math.floor(Math.random()*arr);
   return Quotes[num];
@@ -43,9 +61,15 @@ let randomQuote = function(arr) {
  * `printQuote` function
 ***/
 
+/***
+ * Prints the selected quote by calling the randomQuote function
+ * and verify which condition the quote if fullfiling to decide
+ * which format should be printed
+***/
 
 function printQuote() {
   let quoteSelect = randomQuote(Quotes.length);
+  document.body.style.backgroundColor = generateRandomColor()
   if (quoteSelect.year !== '' && quoteSelect.citation !== '') {
     document.querySelector('div').innerHTML = `
   <p class="quote">${quoteSelect.quote}</p>
@@ -64,8 +88,7 @@ function printQuote() {
   <p class="source">${quoteSelect.author}</p>
   `;
   }
-  
-  //document.querySelector('p').innerText = `${quoteSelect.author}`
+
 }
 
 /***
